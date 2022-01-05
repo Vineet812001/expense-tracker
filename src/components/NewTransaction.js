@@ -1,12 +1,26 @@
 import React from "react";
 import { useState } from "react";
+import { getTransactionsList, transactionsList } from "./storage";
+
+
+const transaction = getTransactionsList()
+
 export const NewTransaction = () => {
   const [amt, setAmount] = useState("");
   const [msg, setMessage] = useState("");
+
+
   function addNewTransaction(event) {
     event.preventDefault();
-    alert(msg);
-    console.log(amt);
+    const entry = {
+      id:generateId(),
+      amt:amt,
+      msg:msg,
+      date:new Date().toLocaleDateString()
+    }
+    transaction.push(entry)
+    localStorage.setItem(transactionsList,JSON.stringify(transaction))
+    alert(JSON.stringify(transaction));
   }
 
   return (
@@ -19,17 +33,20 @@ export const NewTransaction = () => {
           id="Amount"
           value={amt}
           onChange={(e) => setAmount(e.target.value)}
+          required 
         />
         <br />
         <label className="msg" htmlFor="Message">
           Message:
         </label>
         <br />
-        <input
+        <textarea
           type="text"
           id="Message"
           value={msg}
           onChange={(m) => setMessage(m.target.value)}
+          rows="10" cols="20"
+       required
         />
         <br />
         <button type="submit">Add transaction</button>
@@ -37,3 +54,9 @@ export const NewTransaction = () => {
     </div>
   );
 };
+
+
+
+function generateId(){
+  return Math.floor(Math.random() * 100000000)
+}
