@@ -6,7 +6,7 @@ export const History = ({ transaction, dispatch }) => {
   return (
     <div className="history">
       <div className="his">
-        <IconTitle icon="History.svg" title="History" />
+        <IconTitle icon="history.svg" title="History" />
       </div>
       <br />
       {transaction.map((entry) => (
