@@ -6,24 +6,17 @@ import { History } from "./components/History";
 import { useEffect, useReducer } from "react";
 import { getTransactionsList, transactionsList } from "./components/storage";
 
-function setFavIcon(){
-  const icon = document.getElementById("favicon");
-  icon.href = "icons/logo (1).svg"
-}
-
 function App() {
   const transaction = getTransactionsList();
-  const Title = "Expense Tracker"
-
-
+  const Title = "Expense Tracker";
 
   useEffect(() => {
-    document.title = Title
- }, []);
+    document.title = Title;
+  }, []);
 
   function reducer(transaction, action) {
     if (action.type === "Update") {
-      const list =[action.payload.entry, ...transaction]
+      const list = [action.payload.entry, ...transaction];
       localStorage.setItem(transactionsList, JSON.stringify(list));
       return list;
     } else if (action.type === "Delete") {
