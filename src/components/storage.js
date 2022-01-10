@@ -1,5 +1,4 @@
-
-export const transactionsList = "transactions";
+export const transactionsList = "transaction";
 
 const localStorageTransactions = JSON.parse(
   localStorage.getItem(transactionsList)
@@ -10,6 +9,8 @@ let transaction =
     ? localStorageTransactions
     : [];
 
-export function getTransactionsList(){
-return transaction
+export function getTransactionsList() {
+  return transaction;
 }
+
+

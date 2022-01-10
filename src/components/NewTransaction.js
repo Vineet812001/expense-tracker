@@ -1,31 +1,30 @@
 import React from "react";
 import { useState } from "react";
-import { getTransactionsList, transactionsList } from "./storage";
+import  IconTitle from "./IconTitle";
 
-
-const transaction = getTransactionsList()
-
-export const NewTransaction = () => {
+export const NewTransaction = ({ transaction, dispatch }) => {
   const [amt, setAmount] = useState("");
   const [msg, setMessage] = useState("");
-
 
   function addNewTransaction(event) {
     event.preventDefault();
     const entry = {
-      id:generateId(),
-      amt:amt,
-      msg:msg,
-      date:new Date().toLocaleDateString()
-    }
-    transaction.push(entry)
-    localStorage.setItem(transactionsList,JSON.stringify(transaction))
-    alert(JSON.stringify(transaction));
+      id: generateId(),
+      amt: amt,
+      msg: msg,
+      date: new Date().toLocaleDateString(),
+    };
+
+    const action = { type: "Update", payload: { entry: entry } };
+    dispatch(action);
   }
 
   return (
     <div className="Trans">
-      <p>Add new transaction</p>
+      <div className="Add">
+      <IconTitle icon="transaction.svg" title="Add new transaction" />
+      </div>
+
       <form onSubmit={addNewTransaction}>
         <label htmlFor="Amount">Amount:</label> <br />
         <input
@@ -33,7 +32,7 @@ export const NewTransaction = () => {
           id="Amount"
           value={amt}
           onChange={(e) => setAmount(e.target.value)}
-          required 
+          required
         />
         <br />
         <label className="msg" htmlFor="Message">
@@ -45,8 +44,9 @@ export const NewTransaction = () => {
           id="Message"
           value={msg}
           onChange={(m) => setMessage(m.target.value)}
-          rows="10" cols="20"
-       required
+          rows="10"
+          cols="20"
+          required
         />
         <br />
         <button type="submit">Add transaction</button>
@@ -55,8 +55,6 @@ export const NewTransaction = () => {
   );
 };
 
-
-
-function generateId(){
-  return Math.floor(Math.random() * 100000000)
+function generateId() {
+  return Math.floor(Math.random() * 100000000);
 }

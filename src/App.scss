@@ -13,27 +13,53 @@ html {
     justify-content: space-between;
   }
 }
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logosym {
+  margin-right: 10px;
+  padding-bottom: 12px;
+}
+
 .balance {
+  display: flex;
+  align-items: flex-start;
+  margin: 10px;
   h4 {
     font-weight: 400;
     margin-top: 15px;
-    margin: 10px;
+
   }
   h1 {
     color: #30dc80;
     font-weight: 500;
-    margin: 10px;
   }
+}
+
+.BalLogo {
+  padding-bottom: 6px;
 }
 .Trans {
   font-weight: 300;
   margin-top: 15px;
   margin: 10px;
+
+  .Add {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #f4f4f4; 
+  }
+
   p {
-    border-bottom: 2px solid #f4f4f4;
+    
     padding-bottom: 8px;
     width: 400px;
     font-weight: 400;
+    margin: 10px;
+    margin-bottom: 0%;
   }
   input {
     border: none;
@@ -70,49 +96,41 @@ html {
   }
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 // History
 .history {
+
+  .his{
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #f4f4f4;
+  }
+
   h4 {
     font-weight: 400;
-    border-bottom: 2px solid #f4f4f4;
+    
     padding-bottom: 8px;
     margin: 0%;
   }
+}
+
+.iconTitle{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 8px;
+  margin-right: 8px;
+
+  .title{
+    margin-left: 8px;
+  }
+}
+
+.HisLogo{
+  padding-bottom: 8px;
+  margin-right: 8px;
 }
 
 .container {
@@ -151,7 +169,7 @@ html {
     h1 {
       margin: 0%;
       align-self: center;
-      color: red;
+      color: #30dc80;;
       font-size: 20px;
     }
   }

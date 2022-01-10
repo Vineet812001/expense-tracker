@@ -1,17 +1,17 @@
 import React from "react";
 import { Entry } from "./Entry";
-import { getTransactionsList } from "./storage";
+import IconTitle from "./IconTitle";
 
-const transaction = getTransactionsList()
-
-export const History = () => {
+export const History = ({ transaction, dispatch }) => {
   return (
     <div className="history">
-      <h4>History</h4>
+      <div className="his">
+        <IconTitle icon="History.svg" title="History" />
+      </div>
       <br />
       {transaction.map((entry) => (
-        <Entry key={entry.id} {...entry} />
+        <Entry key={entry.id} dispatch={dispatch} {...entry} />
       ))}
     </div>
-  )
+  );
 };
